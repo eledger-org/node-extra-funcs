@@ -1,18 +1,31 @@
 #!/bin/bash
 
+devDependenciesPrint() {
+  echo "Try installing dev depencencies." 1>&2
+  echo "    npm install"                  1>&2
+}
+
 if [ -f "node_modules/.bin/jsdoc" ]; then
   cmd="node node_modules/.bin/jsdoc"
 elif [  -f "$(which jsdoc)" ]; then
   cmd="jsdoc"
 else
-  echo "Try installing jsdoc before generating docs." 1>&2
-  echo "    npm install jsdoc"                        1>&2
-  echo "Or install it globally"                       1>&2
-  echo "    sudo npm install -g jsdoc"                1>&2
+  devDependenciesPrint
+
+  exit 1
+fi
+
+if [ ! -d "node_modules/ink-docstrap/template" ]; then
+  devDependenciesPrint
 
   exit 1
 fi
 
 rm -rf gen
-$cmd -d gen .
+$cmd \
+  -d gen \
+  -c config/jsdoc.conf.json \
+  -R README.md \
+  -t ./node_modules/ink-docstrap/template \
+  -r . \
 

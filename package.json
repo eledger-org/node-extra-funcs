@@ -12,7 +12,10 @@
     "eslint": "^2.13.0",
     "mocha": "^2.5.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ink-docstrap": "^1.2.1",
+    "jsdoc": "^3.4.0"
+  },
   "scripts": {
     "test": "./bin/run_tests.sh",
     "docpublish": "./bin/build_docs.sh && ./bin/publish_docs.sh"

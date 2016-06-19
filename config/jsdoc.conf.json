@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    "plugins/markdown",
+    "plugins/summarize"
+  ],
+  "source": {
+    "excludePattern":     "node_modules"
+  },
+  "templates": {
+    "collapseSymbols":    true,
+    "linenums":           true,
+    "outputSourceFiles":  true,
+    "outputSourcePath":   true,
+    "theme":              "spacelab"
+  }
+}
