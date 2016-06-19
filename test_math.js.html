@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Source: math.js</title>
+	<title>Documentation Source: test/math.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,188 +63,174 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: math.js</h1>
+		<h1 class="page-title">Source: test/math.js</h1>
     
 <section>
     <article>
         <pre
-            class="sunlight-highlight-javascript linenums">"use strict";
+            class="sunlight-highlight-javascript linenums">/* eslint-env mocha */
 
 /**
- * Provides an API for enabling extra math functions.
+ * Automated mocha and chai tests for the module {@link module:math math.js}.
  *
- * @module math
+ * @module test/math
  *
  * @author Henry Brown
  */
 
+"use strict";
 
-/**
- * Enables all of the math functions. Including
- *  - {@link module:math~floor10 floor10}
- *  - {@link module:math~ceil10  ceil10}
- *  - {@link module:math~round10 round10}
- */
-module.exports.enableAll = function() {
-  let s = require("./math.js");
+var assert = require("chai").assert;
+let mathFuncController = require("../index.js").math;
 
-  s.enableFloor10();
-  s.enableCeil10();
-  s.enableRound10();
-};
+describe("math.js", function() {
+  describe("enable*()", function() {
+    describe("Test that by default, none of the math functions are enabled", function() {
+      it("should not have enabled Math.floor10", function() {
+        assert.isUndefined(Math.floor10);
+      });
 
-/**
- * A floor function allowing for more discrete control over the rounding
- *  location.
- *
- * @param {Number} value  The value on which you want to perform the floor.
- * @param {Number} exp    The exponent of 10 marking the location from which to
- *                        perform the floor.  floor10(987, 2) will round down to
- *                        900.
- *
- * @returns {Number}      The floored value (900 in the case above)
- */
-module.exports.floor10 = function(value, exp) {
-  return decimalAdjust("floor", value, exp);
-};
+      it("should not have enabled Math.ceil10", function() {
+        assert.isUndefined(Math.ceil10);
+      });
 
-/**
- * Attaches the {@link module:math~floor10 floor10} function to the Math global.
- *
- * @throws {Error}        If Math has already implemented floor10.
- */
-module.exports.enableFloor10 = function() {
-  if (Math.floor10 === undefined) {
-    this.enabledFloor10 = true;
+      it("should not have enabled Math.round10", function() {
+        assert.isUndefined(Math.round10);
+      });
+    });
+  });
 
-    Math.floor10 = require("./math").floor10;
-  } else {
-    if (this.enabledFloor10 !== true) {
-      throw new Error("Attempted to redefine floor10 function");
-    }
-  }
-};
+  describe("enableFloor10()", function() {
+    it("should enable Math.floor10", function() {
+      mathFuncController.enableFloor10();
 
-/**
- * Detaches the {@link module:math~floor10 floor10} function from the Math
- *  global.
- */
-module.exports.disableFloor10 = function() {
-  if (this.enabledFloor10 === true) {
-    delete Math.floor10;
-  }
-};
+      assert.isDefined(Math.floor10);
+    });
 
-/**
- * A ceiling function allowing for more discrete control over the rounding
- *  location.
- *
- * @param {Number} value  The value on which you want to perform the ceiling.
- * @param {Number} exp    The exponent of 10 marking the location from which to
- *                        perform the ceiling.  ceil10(456, 2) will round up to
- *                        500.
- *
- * @returns {Number}      The ceiled value (500 in the case above)
- */
-function ceil10(value, exp) {
-  return decimalAdjust("ceil", value, exp);
-}
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        mathFuncController.enableFloor10();
+      });
+    });
+  });
 
-/**
- * Attaches the {@link module:math~ceil10 ceil10} function to the Math global.
- *
- * @throws {Error}        If Math has already implemented ceil10
- */
-module.exports.enableCeil10 = function() {
-  if (Math.ceil10 === undefined) {
-    this.enabledCeil10 = true;
+  describe("enableCeil10()", function() {
+    it("should enable Math.ceil10", function() {
+      mathFuncController.enableCeil10();
 
-    Math.ceil10 = ceil10;
-  } else {
-    if (this.enabledCeil10 !== true) {
-      throw new Error("Attempted to redefine ceil10 function");
-    }
-  }
-};
+      assert.isDefined(Math.ceil10);
+    });
 
-/**
- * Detaches the {@link module:math~ceil10 ceil10} function from the Math global.
- */
-module.exports.disableCeil10 = function() {
-  if (this.enabledCeil10 === true) {
-    delete Math.ceil10;
-  }
-};
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        mathFuncController.enableCeil10();
+      });
+    });
+  });
 
-/**
- * A rounding function allowing for more discrete control over the rounding
- *  location.
- *
- * @param {Number} value  The value on which you want to perform the round.
- * @param {Number} exp    The exponent of 10 marking the location from which to
- *                        perform the round.  round10(1251, 2) will round up to
- *                        1300.
- *
- * @returns {Number}      The rounded value (1300 in the case above)
- */
-function round10(value, exp) {
-  return decimalAdjust("round", value, exp);
-}
+  describe("enableRound10()", function() {
+    it("should enable Math.round10", function() {
+      mathFuncController.enableRound10();
 
-/**
- * Attaches the {@link module:math~round10 round10} function to the Math global.
- *
- * @throws {Error}        If Math has already implemented round10
- */
-module.exports.enableRound10 = function() {
-  if (Math.round10 === undefined) {
-    this.enabledRound10 = true;
+      assert.isDefined(Math.round10);
+    });
 
-    Math.round10 = round10;
-  } else {
-    if (this.enabledRound10 !== true) {
-      throw new Error("Attempted to redefine round10 function");
-    }
-  }
-};
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        mathFuncController.enableRound10();
+      });
+    });
+  });
 
-/**
- * Detaches the {@link module:math~round10 round10} function from the Math
- *  global.
- */
-module.exports.disableRound10 = function() {
-  if (this.enabledRound10 === true) {
-    delete Math.round10;
-  }
-};
+  describe("Test for existing function clobbering", function() {
+    it("should not clobber an existing floor10 function", function() {
+      assert.isTrue(mathFuncController.enabledFloor10);
+      assert.isDefined(Math.floor10);
 
-/**
- * Decimal adjustment of a number.
- *
- * @param {String}  type        The type of adjustment.
- * @param {Number}  value       The number.
- * @param {Integer} exp         The exponent (the 10 logarithm of the adjustment
- *                              base).
- * @returns {Number} The adjusted value.
- */
-function decimalAdjust(type, value, exp) {
-  // If the exp is undefined or zero...
-  if (typeof exp === "undefined" || +exp === 0) {
-    return Math[type](value);
-  }
-  value = +value;
-  exp = +exp;
-  // If the value is not a number or the exp is not an integer...
-  if (isNaN(value) || !(typeof exp === "number" &amp;&amp; exp % 1 === 0)) {
-    return NaN;
-  }
-  // Shift
-  value = value.toString().split("e");
-  value = Math[type](+(value[0] + "e" + (value[1] ? (+value[1] - exp) : -exp)));
-  // Shift back
-  value = value.toString().split("e");
-  return +(value[0] + "e" + (value[1] ? (+value[1] + exp) : exp));
-}
+      delete mathFuncController.enabledFloor10;
+
+      assert.throws(function() {
+        mathFuncController.enableFloor10();
+      });
+
+      delete Math.floor10;
+
+      assert.isUndefined(Math.floor10);
+    });
+
+    it("should not clobber an existing ceil10 function", function() {
+      assert.isTrue(mathFuncController.enabledCeil10);
+      assert.isDefined(Math.ceil10);
+
+      delete mathFuncController.enabledCeil10;
+
+      assert.throws(function() {
+        mathFuncController.enableCeil10();
+      });
+
+      delete Math.ceil10;
+
+      assert.isUndefined(Math.ceil10);
+    });
+
+    it("should not clobber an existing round10 function", function() {
+      assert.isTrue(mathFuncController.enabledRound10);
+      assert.isDefined(Math.round10);
+
+      delete mathFuncController.enabledRound10;
+
+      assert.throws(function() {
+        mathFuncController.enableRound10();
+      });
+
+      delete Math.round10;
+
+      assert.isUndefined(Math.round10);
+    });
+  });
+
+  describe("enableAll()", function() {
+    it("should enable all math functions", function() {
+      assert.isUndefined(Math.floor10);
+      assert.isUndefined(Math.ceil10);
+      assert.isUndefined(Math.round10);
+
+      mathFuncController.enableAll();
+
+      assert.isDefined(Math.floor10);
+      assert.isDefined(Math.ceil10);
+      assert.isDefined(Math.round10);
+    });
+  });
+
+  describe("floor10()", function() {
+    it("should allow to round down at the 10^exp's place floor10(value, exp)", function() {
+      assert.equal(Math.floor10(999, 3), 0);
+      assert.equal(Math.floor10(999, 2), 900);
+      assert.equal(Math.floor10(999, 1), 990);
+
+      assert.equal(Math.floor10(999.99, -1), 999.9);
+    });
+  });
+
+  describe("ceil10()", function() {
+    it("should allow to round up at the 10^exp's place ceil10(value, exp)", function() {
+      assert.equal(Math.ceil10(111, 3), 1000);
+      assert.equal(Math.ceil10(111, 2), 200);
+      assert.equal(Math.ceil10(111, 1), 120);
+
+      assert.equal(Math.ceil10(111.11, -1), 111.2);
+    });
+  });
+
+  describe("round10()", function() {
+    it("should allow rounding at the 10^exp's place round10(value, exp)", function() {
+      assert.equal(Math.round10(445, 3), 0);
+      assert.equal(Math.round10(455, 3), 0);
+      assert.equal(Math.round10(555, 3), 1000);
+    });
+  });
+});
 
 </pre>
     </article>
