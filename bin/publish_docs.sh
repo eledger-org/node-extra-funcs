@@ -15,7 +15,7 @@ fi
 
 orphan="--orphan"
 
-SAVED_BRANCH=$(git branch | sed 's/\* //g')
+SAVED_BRANCH=$(git branch | grep -E "^\* " | sed 's/\* //g')
 
 if ! git checkout "$orphan" gh-pages; then
   git checkout gh-pages
