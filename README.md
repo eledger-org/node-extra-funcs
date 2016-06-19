@@ -5,6 +5,12 @@
 
 A node.js library intending to expand some of the functions available to built-ins
 
+## Functions
+
+You can find examples below, or hop over to the docs:
+- [math](/module-math.html)
+- [string](/module-string.html)
+
 ## Example
 
 ### Code (See examples/string-example.js)

@@ -10,10 +10,13 @@
 
 
 /**
- * Enables all of the math functions. Including
- *  - {@link module:math~floor10 floor10}
- *  - {@link module:math~ceil10  ceil10}
- *  - {@link module:math~round10 round10}
+ * Enables all of the math functions including
+ *  - {@link module:math.floor10 floor10}
+ *  - {@link module:math.ceil10  ceil10}
+ *  - {@link module:math.round10 round10}
+ *
+ * @throws {Error}        If Math has already implemented any of the above
+ *                        functions
  */
 module.exports.enableAll = function() {
   let s = require("./math.js");
@@ -39,7 +42,7 @@ module.exports.floor10 = function(value, exp) {
 };
 
 /**
- * Attaches the {@link module:math~floor10 floor10} function to the Math global.
+ * Attaches the {@link module:math.floor10 floor10} function to the Math global.
  *
  * @throws {Error}        If Math has already implemented floor10.
  */
@@ -56,7 +59,7 @@ module.exports.enableFloor10 = function() {
 };
 
 /**
- * Detaches the {@link module:math~floor10 floor10} function from the Math
+ * Detaches the {@link module:math.floor10 floor10} function from the Math
  *  global.
  */
 module.exports.disableFloor10 = function() {
@@ -76,12 +79,12 @@ module.exports.disableFloor10 = function() {
  *
  * @returns {Number}      The ceiled value (500 in the case above)
  */
-function ceil10(value, exp) {
+module.exports.ceil10 = function(value, exp) {
   return decimalAdjust("ceil", value, exp);
-}
+};
 
 /**
- * Attaches the {@link module:math~ceil10 ceil10} function to the Math global.
+ * Attaches the {@link module:math.ceil10 ceil10} function to the Math global.
  *
  * @throws {Error}        If Math has already implemented ceil10
  */
@@ -89,7 +92,7 @@ module.exports.enableCeil10 = function() {
   if (Math.ceil10 === undefined) {
     this.enabledCeil10 = true;
 
-    Math.ceil10 = ceil10;
+    Math.ceil10 = require("./math").ceil10;
   } else {
     if (this.enabledCeil10 !== true) {
       throw new Error("Attempted to redefine ceil10 function");
@@ -98,7 +101,7 @@ module.exports.enableCeil10 = function() {
 };
 
 /**
- * Detaches the {@link module:math~ceil10 ceil10} function from the Math global.
+ * Detaches the {@link module:math.ceil10 ceil10} function from the Math global.
  */
 module.exports.disableCeil10 = function() {
   if (this.enabledCeil10 === true) {
@@ -117,12 +120,12 @@ module.exports.disableCeil10 = function() {
  *
  * @returns {Number}      The rounded value (1300 in the case above)
  */
-function round10(value, exp) {
+module.exports.round10 = function(value, exp) {
   return decimalAdjust("round", value, exp);
-}
+};
 
 /**
- * Attaches the {@link module:math~round10 round10} function to the Math global.
+ * Attaches the {@link module:math.round10 round10} function to the Math global.
  *
  * @throws {Error}        If Math has already implemented round10
  */
@@ -130,7 +133,7 @@ module.exports.enableRound10 = function() {
   if (Math.round10 === undefined) {
     this.enabledRound10 = true;
 
-    Math.round10 = round10;
+    Math.round10 = require("./math").round10;
   } else {
     if (this.enabledRound10 !== true) {
       throw new Error("Attempted to redefine round10 function");
@@ -139,7 +142,7 @@ module.exports.enableRound10 = function() {
 };
 
 /**
- * Detaches the {@link module:math~round10 round10} function from the Math
+ * Detaches the {@link module:math.round10 round10} function from the Math
  *  global.
  */
 module.exports.disableRound10 = function() {

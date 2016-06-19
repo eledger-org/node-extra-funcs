@@ -1,5 +1,13 @@
 /* eslint-env mocha */
 
+/**
+ * Automated mocha and chai tests for the module {@link module:string string.js}.
+ *
+ * @module test/string
+ *
+ * @author Henry Brown
+ */
+
 "use strict";
 
 var assert = require("chai").assert;
