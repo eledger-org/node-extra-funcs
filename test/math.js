@@ -15,7 +15,7 @@ let mathFuncController = require("../index.js").math;
 
 describe("math.js", function() {
   describe("enable*()", function() {
-    describe("Test that by default, none of the math functions are enabled", function() {
+    describe("Test that no extra math functions are implemented", function() {
       it("should not have enabled Math.floor10", function() {
         assert.isUndefined(Math.floor10);
       });
@@ -135,29 +135,29 @@ describe("math.js", function() {
 
   describe("floor10()", function() {
     it("should allow to round down at the 10^exp's place floor10(value, exp)", function() {
-      assert.equal(Math.floor10(999, 3), 0);
-      assert.equal(Math.floor10(999, 2), 900);
-      assert.equal(Math.floor10(999, 1), 990);
+      assert.strictEqual(Math.floor10(999, 3), 0);
+      assert.strictEqual(Math.floor10(999, 2), 900);
+      assert.strictEqual(Math.floor10(999, 1), 990);
 
-      assert.equal(Math.floor10(999.99, -1), 999.9);
+      assert.strictEqual(Math.floor10(999.99, -1), 999.9);
     });
   });
 
   describe("ceil10()", function() {
     it("should allow to round up at the 10^exp's place ceil10(value, exp)", function() {
-      assert.equal(Math.ceil10(111, 3), 1000);
-      assert.equal(Math.ceil10(111, 2), 200);
-      assert.equal(Math.ceil10(111, 1), 120);
+      assert.strictEqual(Math.ceil10(111, 3), 1000);
+      assert.strictEqual(Math.ceil10(111, 2), 200);
+      assert.strictEqual(Math.ceil10(111, 1), 120);
 
-      assert.equal(Math.ceil10(111.11, -1), 111.2);
+      assert.strictEqual(Math.ceil10(111.11, -1), 111.2);
     });
   });
 
   describe("round10()", function() {
     it("should allow rounding at the 10^exp's place round10(value, exp)", function() {
-      assert.equal(Math.round10(445, 3), 0);
-      assert.equal(Math.round10(455, 3), 0);
-      assert.equal(Math.round10(555, 3), 1000);
+      assert.strictEqual(Math.round10(445, 3), 0);
+      assert.strictEqual(Math.round10(455, 3), 0);
+      assert.strictEqual(Math.round10(555, 3), 1000);
     });
   });
 });
