@@ -28,6 +28,12 @@ describe("math.js", function() {
 
       assert.isDefined(Math.floor10);
     });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        mathFuncController.enableFloor10();
+      });
+    });
   });
 
   describe("enableCeil10()", function() {
@@ -36,6 +42,12 @@ describe("math.js", function() {
 
       assert.isDefined(Math.ceil10);
     });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        mathFuncController.enableCeil10();
+      });
+    });
   });
 
   describe("enableRound10()", function() {
@@ -43,6 +55,12 @@ describe("math.js", function() {
       mathFuncController.enableRound10();
 
       assert.isDefined(Math.round10);
+    });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        mathFuncController.enableRound10();
+      });
     });
   });
 

@@ -8,15 +8,19 @@ module.exports.enableAll = function() {
   s.enableRound10();
 };
 
+function floor10(value, exp) {
+  return decimalAdjust("floor", value, exp);
+}
+
 module.exports.enableFloor10 = function() {
   if (Math.floor10 === undefined) {
     this.enabledFloor10 = true;
 
-    Math.floor10 = function(value, exp) {
-      return decimalAdjust("floor", value, exp);
-    };
+    Math.floor10 = floor10;
   } else {
-    throw new Error("Attempted to redefine floor10 function");
+    if (this.enabledFloor10 !== true) {
+      throw new Error("Attempted to redefine floor10 function");
+    }
   }
 };
 
@@ -26,15 +30,19 @@ module.exports.disableFloor10 = function() {
   }
 };
 
+function ceil10(value, exp) {
+  return decimalAdjust("ceil", value, exp);
+}
+
 module.exports.enableCeil10 = function() {
   if (Math.ceil10 === undefined) {
     this.enabledCeil10 = true;
 
-    Math.ceil10 = function(value, exp) {
-      return decimalAdjust("ceil", value, exp);
-    };
+    Math.ceil10 = ceil10;
   } else {
-    throw new Error("Attempted to redefine ceil10 function");
+    if (this.enabledCeil10 !== true) {
+      throw new Error("Attempted to redefine ceil10 function");
+    }
   }
 };
 
@@ -44,15 +52,19 @@ module.exports.disableCeil10 = function() {
   }
 };
 
+function round10(value, exp) {
+  return decimalAdjust("round", value, exp);
+}
+
 module.exports.enableRound10 = function() {
   if (Math.round10 === undefined) {
     this.enabledRound10 = true;
 
-    Math.round10 = function(value, exp) {
-      return decimalAdjust("round", value, exp);
-    };
+    Math.round10 = round10;
   } else {
-    throw new Error("Attempted to redefine round10 function");
+    if (this.enabledRound10 !== true) {
+      throw new Error("Attempted to redefine round10 function");
+    }
   }
 };
 

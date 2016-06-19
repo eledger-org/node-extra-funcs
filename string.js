@@ -24,6 +24,10 @@ module.exports.enablePadLeft = function() {
 
       return String(padValue.repeat(padCount(this, padValue, padLength)) + this);
     };
+  } else {
+    if (this.enabledPadLeft !== true) {
+      throw new Error("Attempted to redefine padLeft function");
+    }
   }
 };
 
@@ -44,6 +48,10 @@ module.exports.enablePadRight = function() {
 
       return String(this + padValue.repeat(padCount(this, padValue, padLength)));
     };
+  } else {
+    if (this.enabledPadRight !== true) {
+      throw new Error("Attempted to redefine padRight function");
+    }
   }
 };
 
@@ -60,6 +68,10 @@ module.exports.enablePrepend = function() {
     String.prototype.prepend = function(prefix) {
       return String(prefix + this);
     };
+  } else {
+    if (this.enabledPrepend !== true) {
+      throw new Error("Attempted to redefine prepend function");
+    }
   }
 };
 
@@ -76,6 +88,10 @@ module.exports.enableIndent = function() {
     String.prototype.indent = function(indentSize) {
       return ("\n" + this).replace(/[\r\n]+/g, "\n" + " ".repeat(indentSize)).slice(1);
     };
+  } else {
+    if (this.enabledIndent !== true) {
+      throw new Error("Attempted to redefine indent function");
+    }
   }
 };
 

@@ -32,6 +32,12 @@ describe("string.js", function() {
 
       assert.isDefined("".padLeft);
     });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        strFuncController.enablePadLeft();
+      });
+    });
   });
 
   describe("enablePadRight()", function() {
@@ -39,6 +45,12 @@ describe("string.js", function() {
       strFuncController.enablePadRight();
 
       assert.isDefined("".padRight);
+    });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        strFuncController.enablePadRight();
+      });
     });
   });
 
@@ -48,6 +60,12 @@ describe("string.js", function() {
 
       assert.isDefined("".prepend);
     });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        strFuncController.enablePrepend();
+      });
+    });
   });
 
   describe("enableIndent()", function() {
@@ -55,6 +73,12 @@ describe("string.js", function() {
       strFuncController.enableIndent();
 
       assert.isDefined("".indent);
+    });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        strFuncController.enableIndent();
+      });
     });
   });
 
