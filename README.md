@@ -50,25 +50,25 @@ A node.js library intending to expand some of the functions available to built-i
 
 ### Code (See examples/math-example.js
 
-  var mathFuncController = require("../").math;
+    var mathFuncController = require("../").math;
 
-  mathFuncController.enableAll();
-  console.log("\n");
+    mathFuncController.enableAll();
+    console.log("\n");
 
-  console.log(Math.floor10(999, 2));
-  console.log();
+    console.log(Math.floor10(999, 2));
+    console.log();
 
-  console.log(Math.ceil10(111, 3));
-  console.log();
+    console.log(Math.ceil10(111, 3));
+    console.log();
 
-  console.log(Math.round10(5000, 4));
-  console.log();
+    console.log(Math.round10(5000, 4));
+    console.log();
 
 ### Output
 
-  900
+    900
 
-  1000
+    1000
 
-  1000
+    1000
 
