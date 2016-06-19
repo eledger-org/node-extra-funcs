@@ -1,0 +1,60 @@
+{
+  "name": "node-extra-funcs",
+  "version": "1.0.0",
+  "description": "A string library that adds additional functions to the String object.",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.13.0",
+    "mocha": "^2.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./bin/run_tests.sh",
+    "docgen": "yuidoc -o gen ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eledger-org/node-extra-funcs.git"
+  },
+  "author": "Henry Brown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eledger-org/node-extra-funcs/issues"
+  },
+  "homepage": "https://github.com/eledger-org/node-extra-funcs#readme",
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "comma-dangle": "warn",
+      "semi": "error",
+      "curly": "error",
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ]
+    }
+  }
+}
