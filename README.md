@@ -8,8 +8,8 @@ A node.js library intending to expand some of the functions available to built-i
 ## Functions
 
 You can find examples below, or hop over to the docs:
-- [math](/module-math.html)
-- [string](/module-string.html)
+- [math](https://eledger-org.github.io/node-extra-funcs/module-math.html)
+- [string](https://eledger-org.github.io/node-extra-funcs/module-string.html)
 
 ## Example
 
