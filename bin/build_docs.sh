@@ -1,11 +1,18 @@
 #!/bin/bash
 
-if [ ! -f "$(which yuidoc)" ]; then
-  echo "Try installing yuidoc before generating docs." 1>&2
-  echo "    sudo npm install -g yuidocjs" 1>&2
+if [ -f "node_modules/.bin/jsdoc" ]; then
+  cmd="node node_modules/.bin/jsdoc"
+elif [  -f "$(which jsdoc)" ]; then
+  cmd="jsdoc"
+else
+  echo "Try installing jsdoc before generating docs." 1>&2
+  echo "    npm install jsdoc"                        1>&2
+  echo "Or install it globally"                       1>&2
+  echo "    sudo npm install -g jsdoc"                1>&2
 
   exit 1
 fi
 
-yuidoc -o gen .
+rm -rf gen
+$cmd -d gen .
 
