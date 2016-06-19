@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Source: string.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-index.html">index</a></li><li><a href="module-math.html">math</a></li><li><a href="module-string.html">string</a></li><li><a href="module-test_math.html">test/math</a></li><li><a href="module-test_string.html">test/string</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+		<div class="col-sm-3 col-md-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: string.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">"use strict";
+
+/**
+ * Provides an API for enabling extra string functions.
+ *
+ * @module string
+ *
+ * @author Henry Brown
+ */
+
+
+/**
+ * A helper function that's used to get the number of repeats of padValue needed
+ *  to pad string's length to padLength without exceeding padLength while only
+ *  repeating whole portions of padValue.
+ *
+ * @example
+ * //returns 2 because the length of "freddyblabla" is 12, and additional
+ * // repetitions of bla would cause us to exceed the specified padLength of 13
+ * padCount("freddy", "bla", 13);
+ */
+module.exports.padCount = function(string, padValue, padLength) {
+  return Math.floor(Math.max(0, padLength - string.length) / padValue.length);
+};
+
+/**
+ * Enables all of the string functions including:
+ *  - {@link module:string.padLeft  padLeft}
+ *  - {@link module:string.padRight padRight}
+ *  - {@link module:string.prepend  prepend}
+ *  - {@link module:string.indent   indent}
+ *
+ * @throws {Error}        If String has already implemented any of the above
+ *                        functions
+ */
+module.exports.enableAll = function() {
+  let s = require("./string.js");
+
+  s.enablePadLeft();
+  s.enablePadRight();
+  s.enablePrepend();
+  s.enableIndent();
+};
+
+/**
+ * Pads the left hand side of this string with copies of padValue until another
+ *  would cause the string's length to exceed padLength.
+ *
+ * @param {String} padValue   The value to repeat
+ * @param {String} padLength  The max length of the string after padding
+ *
+ * @returns {String}          A padded string
+ *
+ * @example
+ * //returns "00007"
+ * "7".padLeft("0", 5)
+ */
+module.exports.padLeft = function(padValue, padLength) {
+  if (padLength &lt; 0) {
+    throw new Error("Invalid pad length");
+  } else if (typeof this !== "string") {
+    throw new Error("This function can only be used on a string object after" +
+      "calling require(\"node-extra-funcs\").string.enablePadLeft();");
+  }
+
+  return String(padValue.repeat(require("./string")
+    .padCount(this, padValue, padLength)) + this);
+};
+
+/**
+ * Attaches the {@link module:string.padLeft padLeft} function to the String
+ *  prototypes so that it can be used on any String objects in the application.
+ *
+ * @throws {Error}            If String has already implemented padLeft.
+ */
+module.exports.enablePadLeft = function() {
+  if (String.prototype.padLeft === undefined) {
+    this.enabledPadLeft = true;
+
+    String.prototype.padLeft = require("./string").padLeft;
+  } else {
+    if (this.enabledPadLeft !== true) {
+      throw new Error("Attempted to redefine padLeft function");
+    }
+  }
+};
+
+/**
+ * Detaches the {@link module:string.padLeft padLeft} function from the String
+ *  prototypes.
+ */
+module.exports.disablePadLeft = function() {
+  if (this.enabledPadLeft === true) {
+    delete String.prototype.padLeft;
+  }
+};
+
+/**
+ * Pads the right hand side of this string with copies of padValue until another
+ *  would cause the string's length to exceed padLength.
+ *
+ * @param {String} padValue   The value to repeat
+ * @param {String} padLength  The max length of the string after padding
+ *
+ * @returns {String}          A padded string
+ *
+ * @example
+ * //returns "Noooo"
+ * "N".padRight("o", 5)
+ */
+module.exports.padRight = function(padValue, padLength) {
+  if (padLength &lt; 0) {
+    throw new Error("Invalid pad length");
+  }
+
+  return String(this + padValue.repeat(require("./string")
+    .padCount(this, padValue, padLength)));
+};
+
+/**
+ * Attaches the {@link module:string.padRight padRight} function to the String
+ *  prototypes so that it can be used on any String objects in the application.
+ *
+ * @throws {Error}            If String has already implemented padRight.
+ */
+module.exports.enablePadRight = function() {
+  if (String.prototype.padRight === undefined) {
+    this.enabledPadRight = true;
+
+    String.prototype.padRight = require("./string").padRight;
+  } else {
+    if (this.enabledPadRight !== true) {
+      throw new Error("Attempted to redefine padRight function");
+    }
+  }
+};
+
+/**
+ * Detaches the {@link module:string.padRight padRight} function from the String
+ *  prototypes.
+ */
+module.exports.disablePadRight = function() {
+  if (this.enabledPadRight === true) {
+    delete String.prototype.padRight;
+  }
+};
+
+/**
+ * Concatenates the prefix parameter and this string together.
+ *
+ * @param {String} prefix     The value to prepend.
+ *
+ * @returns {String}          The concatenated string.
+ *
+ * @example
+ * //returns "prefix"
+ * "fix".prepend("pre");
+ */
+module.exports.prepend = function(prefix) {
+  return String(prefix + this);
+};
+
+/**
+ * Attaches the {@link module:string.prepend prepend} function to the String
+ *  prototypes so that it can be used on any String objects in the application.
+ *
+ * @throws {Error}            If String has already implemented prepend.
+ */
+module.exports.enablePrepend = function() {
+  if (String.prototype.prepend === undefined) {
+    this.enabledPrepend = true;
+
+    String.prototype.prepend = require("./string").prepend;
+  } else {
+    if (this.enabledPrepend !== true) {
+      throw new Error("Attempted to redefine prepend function");
+    }
+  }
+};
+
+/**
+ * Detaches the {@link module:string.prepend prepend} function from the String
+ *  prototypes.
+ */
+module.exports.disablePrepend = function() {
+  if (this.enabledPrepend === true) {
+    delete String.prototype.prepend;
+  }
+};
+
+/**
+ * Indents this string by a number of spaces characters equal to the
+ *  indentSize parameter.
+ *
+ * @param {Number} indentSize The number of spaces to indent each line
+ *
+ * @returns {String}          The indented string.
+ *
+ * @example
+ * //outputs:
+ * //    {
+ * //      "name": "Fred",
+ * //      "role": "Superhero",
+ * //      "mascot": "Platypus"
+ * //    }
+ * console.log(JSON.stringify({
+ *   "name": "Fred",
+ *   "role": "Superhero",
+ *   "mascot": "Platypus"
+ * }, null, 2).indent(4));
+ */
+module.exports.indent = function(indentSize) {
+  /* prepend a new line in order to indent the first line as well */
+  return ("\n" + this)
+  /* replace all consecutive end of line characters with \n and indentSize
+      spaces */
+    .replace(/[\r\n]+/g, "\n" + " ".repeat(indentSize))
+  /* pulls off the first newline (which we prepended in order to indent the
+      first line.) */
+    .slice(1);
+};
+
+/**
+ * Attaches the {@link module:string.indent indent} function to the String
+ *  prototypes so that it can be used on any String objects in the application.
+ *
+ * @throws {Error}            If String has already implemented indent.
+ */
+module.exports.enableIndent = function() {
+  if (String.prototype.indent === undefined) {
+    this.enabledIndent = true;
+
+    String.prototype.indent = require("./string").indent;
+  } else {
+    if (this.enabledIndent !== true) {
+      throw new Error("Attempted to redefine indent function");
+    }
+  }
+};
+
+/**
+ * Detaches the {@link module:string.indent indent} function from the String
+ *  prototypes.
+ */
+module.exports.disableIndent = function() {
+  if (this.enabledIndent === true) {
+    delete String.prototype.indent;
+  }
+};
+
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+<div class="modal fade" id="searchResults">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search results</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	
+		on 2016-06-19T00:58:13-07:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			var id = $( heading ).attr( "id" );
+			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		SearcherDisplay.init();
+	});
+</script>
+
+</body>
+</html>

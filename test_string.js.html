@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Source: test/math.js</title>
+	<title>Documentation Source: test/string.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 		<div id="main">
 			
 
-		<h1 class="page-title">Source: test/math.js</h1>
+		<h1 class="page-title">Source: test/string.js</h1>
     
 <section>
     <article>
@@ -71,9 +71,9 @@
             class="sunlight-highlight-javascript linenums">/* eslint-env mocha */
 
 /**
- * Automated mocha and chai tests for the module {@link module:math math.js}.
+ * Automated mocha and chai tests for the module {@link module:string string.js}.
  *
- * @module test/math
+ * @module test/string
  *
  * @author Henry Brown
  */
@@ -81,153 +81,176 @@
 "use strict";
 
 var assert = require("chai").assert;
-let mathFuncController = require("../index.js").math;
+let strFuncController = require("../index.js").string;
 
-describe("math.js", function() {
+describe("string.js", function() {
   describe("enable*()", function() {
-    describe("Test that by default, none of the math functions are enabled", function() {
-      it("should not have enabled Math.floor10", function() {
-        assert.isUndefined(Math.floor10);
+    describe("Test that by default, none of the string functions are enabled", function() {
+      it("should not have enabled String.padLeft", function() {
+        assert.isUndefined("".padLeft);
       });
 
-      it("should not have enabled Math.ceil10", function() {
-        assert.isUndefined(Math.ceil10);
+      it("should not have enabled String.padRight", function() {
+        assert.isUndefined("".padRight);
       });
 
-      it("should not have enabled Math.round10", function() {
-        assert.isUndefined(Math.round10);
+      it("should not have enabled String.prepend", function() {
+        assert.isUndefined("".prepend);
       });
-    });
-  });
 
-  describe("enableFloor10()", function() {
-    it("should enable Math.floor10", function() {
-      mathFuncController.enableFloor10();
-
-      assert.isDefined(Math.floor10);
-    });
-
-    it("shouldn't throw an error if you enable it again", function() {
-      assert.doesNotThrow(function() {
-        mathFuncController.enableFloor10();
+      it("should not have enabled String.indent", function() {
+        assert.isUndefined("".indent);
       });
     });
   });
 
-  describe("enableCeil10()", function() {
-    it("should enable Math.ceil10", function() {
-      mathFuncController.enableCeil10();
+  describe("enablePadLeft()", function() {
+    it("should enable String.padLeft", function() {
+      strFuncController.enablePadLeft();
 
-      assert.isDefined(Math.ceil10);
+      assert.isDefined("".padLeft);
     });
 
     it("shouldn't throw an error if you enable it again", function() {
       assert.doesNotThrow(function() {
-        mathFuncController.enableCeil10();
+        strFuncController.enablePadLeft();
       });
     });
   });
 
-  describe("enableRound10()", function() {
-    it("should enable Math.round10", function() {
-      mathFuncController.enableRound10();
+  describe("enablePadRight()", function() {
+    it("should enable String.padRight", function() {
+      strFuncController.enablePadRight();
 
-      assert.isDefined(Math.round10);
+      assert.isDefined("".padRight);
     });
 
     it("shouldn't throw an error if you enable it again", function() {
       assert.doesNotThrow(function() {
-        mathFuncController.enableRound10();
+        strFuncController.enablePadRight();
+      });
+    });
+  });
+
+  describe("enablePrepend()", function() {
+    it("should enable String.prepend", function() {
+      strFuncController.enablePrepend();
+
+      assert.isDefined("".prepend);
+    });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        strFuncController.enablePrepend();
+      });
+    });
+  });
+
+  describe("enableIndent()", function() {
+    it("should enable String.indent", function() {
+      strFuncController.enableIndent();
+
+      assert.isDefined("".indent);
+    });
+
+    it("shouldn't throw an error if you enable it again", function() {
+      assert.doesNotThrow(function() {
+        strFuncController.enableIndent();
       });
     });
   });
 
   describe("Test for existing function clobbering", function() {
-    it("should not clobber an existing floor10 function", function() {
-      assert.isTrue(mathFuncController.enabledFloor10);
-      assert.isDefined(Math.floor10);
+    it("should not clobber an existing padLeft function", function() {
+      assert.isTrue(strFuncController.enabledPadLeft);
+    });
 
-      delete mathFuncController.enabledFloor10;
+    it("should not clobber an existing padRight function", function() {
+      assert.isTrue(strFuncController.enabledPadRight);
+    });
 
+    it("should not clobber an existing prepend function", function() {
+      assert.isTrue(strFuncController.enabledPrepend);
+    });
+
+    it("should not clobber an existing indent function", function() {
+      assert.isTrue(strFuncController.enabledIndent);
+    });
+  });
+
+  describe("padLeft()", function() {
+    it("should pad single characters", function() {
+      assert.equal("5".padLeft("0", 5), "00005");
+    });
+
+    it("should pad strings provided such that it will not exceed the padLength", function() {
+      assert.equal("bla".padLeft("alb", 6), "albbla");
+    });
+
+    it("should pad fewer than padLength if the string to pad is too long", function() {
+      assert.equal("bla".padLeft("alb", 7), "albbla");
+    });
+
+    it("shouldn't change a string that already has a length >= padLength", function() {
+      let startStr = "this is an example string";
+
+      assert.equal(startStr, startStr.padLeft("0", 5));
+      assert.equal(startStr, startStr.padLeft("0", startStr.length));
+    });
+
+    it("throws an error if you try to padLeft a negative amount", function() {
       assert.throws(function() {
-        mathFuncController.enableFloor10();
+        return " ".padLeft(" ", -1);
       });
+    });
+  });
 
-      delete Math.floor10;
-
-      assert.isUndefined(Math.floor10);
+  describe("padRight()", function() {
+    it("should pad single characters", function() {
+      assert.equal("N".padRight("o", 5), "Noooo");
     });
 
-    it("should not clobber an existing ceil10 function", function() {
-      assert.isTrue(mathFuncController.enabledCeil10);
-      assert.isDefined(Math.ceil10);
+    it("should pad strings provided but not exceed padLength", function() {
+      assert.equal(" ".padRight("sos ", 17), " sos sos sos sos ");
+    });
 
-      delete mathFuncController.enabledCeil10;
+    it("should pad fewer than padLength if the string to pad is too long", function() {
+      assert.equal("alb".padRight("bla", 7), "albbla");
+    });
 
+    it("shouldn't change a string that already has a length >= padLength", function() {
+      let startStr = "this is an example string";
+
+      assert.equal(startStr, startStr.padRight("0", 5));
+      assert.equal(startStr, startStr.padRight("0", startStr.length));
+    });
+
+    it("throws an error if you try to padRight a negative amount", function() {
       assert.throws(function() {
-        mathFuncController.enableCeil10();
+        return " ".padRight(" ", -1);
       });
+    });
+  });
 
-      delete Math.ceil10;
+  describe("prepend()", function() {
+    it("should put the prefix string before the existing string content", function() {
+      assert.equal("bla".prepend("alb"), "albbla");
+    });
+  });
 
-      assert.isUndefined(Math.ceil10);
+  describe("indent()", function() {
+    it("should indent the first line as well as any additional lines", function() {
+      assert.equal("bla".indent(4), "    bla");
     });
 
-    it("should not clobber an existing round10 function", function() {
-      assert.isTrue(mathFuncController.enabledRound10);
-      assert.isDefined(Math.round10);
+    it("should indent all passed content at each newline by the indentSize", function() {
+      assert.equal("bla\nbla".indent(4), "    bla\n    bla");
+    });
 
-      delete mathFuncController.enabledRound10;
-
+    it("throws an error if you try to indent a negative size", function() {
       assert.throws(function() {
-        mathFuncController.enableRound10();
+        return "".indent(-1);
       });
-
-      delete Math.round10;
-
-      assert.isUndefined(Math.round10);
-    });
-  });
-
-  describe("enableAll()", function() {
-    it("should enable all math functions", function() {
-      assert.isUndefined(Math.floor10);
-      assert.isUndefined(Math.ceil10);
-      assert.isUndefined(Math.round10);
-
-      mathFuncController.enableAll();
-
-      assert.isDefined(Math.floor10);
-      assert.isDefined(Math.ceil10);
-      assert.isDefined(Math.round10);
-    });
-  });
-
-  describe("floor10()", function() {
-    it("should allow to round down at the 10^exp's place floor10(value, exp)", function() {
-      assert.equal(Math.floor10(999, 3), 0);
-      assert.equal(Math.floor10(999, 2), 900);
-      assert.equal(Math.floor10(999, 1), 990);
-
-      assert.equal(Math.floor10(999.99, -1), 999.9);
-    });
-  });
-
-  describe("ceil10()", function() {
-    it("should allow to round up at the 10^exp's place ceil10(value, exp)", function() {
-      assert.equal(Math.ceil10(111, 3), 1000);
-      assert.equal(Math.ceil10(111, 2), 200);
-      assert.equal(Math.ceil10(111, 1), 120);
-
-      assert.equal(Math.ceil10(111.11, -1), 111.2);
-    });
-  });
-
-  describe("round10()", function() {
-    it("should allow rounding at the 10^exp's place round10(value, exp)", function() {
-      assert.equal(Math.round10(445, 3), 0);
-      assert.equal(Math.round10(455, 3), 0);
-      assert.equal(Math.round10(555, 3), 1000);
     });
   });
 });

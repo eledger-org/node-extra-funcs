@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Module: math</title>
+	<title>Documentation Module: string</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,7 +63,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Module: math</h1>
+	<h1 class="page-title">Module: string</h1>
 <section>
 
 <header>
@@ -75,7 +75,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Provides an API for enabling extra math functions.</p></div>
+            <div class="description"><p>Provides an API for enabling extra string functions.</p></div>
         
 
         
@@ -120,8 +120,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-3">line 3</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-3">line 3</a>
 			</li>
 		</ul>
 	</dd>
@@ -158,7 +158,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".ceil10"><span class="type-signature">&lt;static> </span>ceil10(value, exp)</h4>
+    <h4 class="name" id=".disableIndent"><span class="type-signature">&lt;static> </span>disableIndent()</h4>
     
     
 </dt>
@@ -166,196 +166,8 @@
 
     
     <div class="description">
-        <p>A ceiling function allowing for more discrete control over the rounding
- location.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The value on which you want to perform the ceiling.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>exp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The exponent of 10 marking the location from which to
-                       perform the ceiling.  ceil10(456, 2) will round up to
-                       500.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-82">line 82</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>The ceiled value (500 in the case above)</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".disableCeil10"><span class="type-signature">&lt;static> </span>disableCeil10()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Detaches the <a href="module-math.html#.ceil10">ceil10</a> function from the Math global.</p>
+        <p>Detaches the <a href="module-string.html#.indent">indent</a> function from the String
+ prototypes.</p>
     </div>
     
 
@@ -401,8 +213,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-106">line 106</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-245">line 245</a>
 			</li>
 		</ul>
 	</dd>
@@ -435,7 +247,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".disableFloor10"><span class="type-signature">&lt;static> </span>disableFloor10()</h4>
+    <h4 class="name" id=".disablePadLeft"><span class="type-signature">&lt;static> </span>disablePadLeft()</h4>
     
     
 </dt>
@@ -443,8 +255,8 @@
 
     
     <div class="description">
-        <p>Detaches the <a href="module-math.html#.floor10">floor10</a> function from the Math
- global.</p>
+        <p>Detaches the <a href="module-string.html#.padLeft">padLeft</a> function from the String
+ prototypes.</p>
     </div>
     
 
@@ -490,8 +302,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-65">line 65</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-92">line 92</a>
 			</li>
 		</ul>
 	</dd>
@@ -524,7 +336,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".disableRound10"><span class="type-signature">&lt;static> </span>disableRound10()</h4>
+    <h4 class="name" id=".disablePadRight"><span class="type-signature">&lt;static> </span>disablePadRight()</h4>
     
     
 </dt>
@@ -532,8 +344,8 @@
 
     
     <div class="description">
-        <p>Detaches the <a href="module-math.html#.round10">round10</a> function from the Math
- global.</p>
+        <p>Detaches the <a href="module-string.html#.padRight">padRight</a> function from the String
+ prototypes.</p>
     </div>
     
 
@@ -579,8 +391,97 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-148">line 148</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-142">line 142</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".disablePrepend"><span class="type-signature">&lt;static> </span>disablePrepend()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Detaches the <a href="module-string.html#.prepend">prepend</a> function from the String
+ prototypes.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-185">line 185</a>
 			</li>
 		</ul>
 	</dd>
@@ -621,11 +522,12 @@
 
     
     <div class="description">
-        <p>Enables all of the math functions including</p>
+        <p>Enables all of the string functions including:</p>
 <ul>
-<li><a href="module-math.html#.floor10">floor10</a></li>
-<li><a href="module-math.html#.ceil10"> ceil10</a></li>
-<li><a href="module-math.html#.round10">round10</a></li>
+<li><a href="module-string.html#.padLeft"> padLeft</a></li>
+<li><a href="module-string.html#.padRight">padRight</a></li>
+<li><a href="module-string.html#.prepend"> prepend</a></li>
+<li><a href="module-string.html#.indent">  indent</a></li>
 </ul>
     </div>
     
@@ -672,8 +574,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-21">line 21</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-36">line 36</a>
 			</li>
 		</ul>
 	</dd>
@@ -703,7 +605,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        <p>If Math has already implemented any of the above
+        <p>If String has already implemented any of the above
                        functions</p>
         </div>
     </dt>
@@ -735,7 +637,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".enableCeil10"><span class="type-signature">&lt;static> </span>enableCeil10()</h4>
+    <h4 class="name" id=".enableIndent"><span class="type-signature">&lt;static> </span>enableIndent()</h4>
     
     
 </dt>
@@ -743,7 +645,8 @@
 
     
     <div class="description">
-        <p>Attaches the <a href="module-math.html#.ceil10">ceil10</a> function to the Math global.</p>
+        <p>Attaches the <a href="module-string.html#.indent">indent</a> function to the String
+ prototypes so that it can be used on any String objects in the application.</p>
     </div>
     
 
@@ -789,8 +692,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-91">line 91</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-229">line 229</a>
 			</li>
 		</ul>
 	</dd>
@@ -820,7 +723,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        <p>If Math has already implemented ceil10</p>
+        <p>If String has already implemented indent.</p>
         </div>
     </dt>
     <dt>
@@ -851,7 +754,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".enableFloor10"><span class="type-signature">&lt;static> </span>enableFloor10()</h4>
+    <h4 class="name" id=".enablePadLeft"><span class="type-signature">&lt;static> </span>enablePadLeft()</h4>
     
     
 </dt>
@@ -859,7 +762,8 @@
 
     
     <div class="description">
-        <p>Attaches the <a href="module-math.html#.floor10">floor10</a> function to the Math global.</p>
+        <p>Attaches the <a href="module-string.html#.padLeft">padLeft</a> function to the String
+ prototypes so that it can be used on any String objects in the application.</p>
     </div>
     
 
@@ -905,8 +809,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-49">line 49</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-76">line 76</a>
 			</li>
 		</ul>
 	</dd>
@@ -936,7 +840,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        <p>If Math has already implemented floor10.</p>
+        <p>If String has already implemented padLeft.</p>
         </div>
     </dt>
     <dt>
@@ -967,7 +871,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".enableRound10"><span class="type-signature">&lt;static> </span>enableRound10()</h4>
+    <h4 class="name" id=".enablePadRight"><span class="type-signature">&lt;static> </span>enablePadRight()</h4>
     
     
 </dt>
@@ -975,7 +879,8 @@
 
     
     <div class="description">
-        <p>Attaches the <a href="module-math.html#.round10">round10</a> function to the Math global.</p>
+        <p>Attaches the <a href="module-string.html#.padRight">padRight</a> function to the String
+ prototypes so that it can be used on any String objects in the application.</p>
     </div>
     
 
@@ -1021,8 +926,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-132">line 132</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-126">line 126</a>
 			</li>
 		</ul>
 	</dd>
@@ -1052,7 +957,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        <p>If Math has already implemented round10</p>
+        <p>If String has already implemented padRight.</p>
         </div>
     </dt>
     <dt>
@@ -1083,7 +988,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".floor10"><span class="type-signature">&lt;static> </span>floor10(value, exp)</h4>
+    <h4 class="name" id=".enablePrepend"><span class="type-signature">&lt;static> </span>enablePrepend()</h4>
     
     
 </dt>
@@ -1091,8 +996,125 @@
 
     
     <div class="description">
-        <p>A floor function allowing for more discrete control over the rounding
- location.</p>
+        <p>Attaches the <a href="module-string.html#.prepend">prepend</a> function to the String
+ prototypes so that it can be used on any String objects in the application.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-169">line 169</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Throws:</h5>
+    
+            
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        <p>If String has already implemented prepend.</p>
+        </div>
+    </dt>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+
+            </dd>
+        </dl>
+    </dt>
+</dl>
+
+
+        
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".indent"><span class="type-signature">&lt;static> </span>indent(indentSize)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Indents this string by a number of spaces characters equal to the
+ indentSize parameter.</p>
     </div>
     
 
@@ -1127,7 +1149,7 @@
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>indentSize</code></td>
             
 
             <td class="type">
@@ -1144,33 +1166,7 @@
 
             
 
-            <td class="description last"><p>The value on which you want to perform the floor.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>exp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The exponent of 10 marking the location from which to
-                       perform the floor.  floor10(987, 2) will round down to
-                       900.</p></td>
+            <td class="description last"><p>The number of spaces to indent each line</p></td>
         </tr>
 
     
@@ -1214,8 +1210,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-40">line 40</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-212">line 212</a>
 			</li>
 		</ul>
 	</dd>
@@ -1244,7 +1240,7 @@
     
             
 <div class="param-desc">
-    <p>The floored value (900 in the case above)</p>
+    <p>The indented string.</p>
 </div>
 
 
@@ -1255,7 +1251,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Number</span>
+<span class="param-type">String</span>
 
 
 
@@ -1266,13 +1262,29 @@
         
 
     
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">//outputs:
+//    {
+//      &quot;name&quot;: &quot;Fred&quot;,
+//      &quot;role&quot;: &quot;Superhero&quot;,
+//      &quot;mascot&quot;: &quot;Platypus&quot;
+//    }
+console.log(JSON.stringify({
+  &quot;name&quot;: &quot;Fred&quot;,
+  &quot;role&quot;: &quot;Superhero&quot;,
+  &quot;mascot&quot;: &quot;Platypus&quot;
+}, null, 2).indent(4));</pre>
+
+
+    
 </dd>
 
         
             
 <hr>
 <dt>
-    <h4 class="name" id=".round10"><span class="type-signature">&lt;static> </span>round10(value, exp)</h4>
+    <h4 class="name" id=".padCount"><span class="type-signature">&lt;static> </span>padCount()</h4>
     
     
 </dt>
@@ -1280,8 +1292,9 @@
 
     
     <div class="description">
-        <p>A rounding function allowing for more discrete control over the rounding
- location.</p>
+        <p>A helper function that's used to get the number of repeats of padValue needed
+ to pad string's length to padLength without exceeding padLength while only
+ repeating whole portions of padValue.</p>
     </div>
     
 
@@ -1290,82 +1303,6 @@
     
 
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The value on which you want to perform the round.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>exp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The exponent of 10 marking the location from which to
-                       perform the round.  round10(1251, 2) will round up to
-                       1300.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     
 
     
@@ -1403,8 +1340,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-123">line 123</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-22">line 22</a>
 			</li>
 		</ul>
 	</dd>
@@ -1429,30 +1366,14 @@
     
 
     
-    <h5>Returns:</h5>
+
     
-            
-<div class="param-desc">
-    <p>The rounded value (1300 in the case above)</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
+        <h5>Example</h5>
         
-<span class="param-type">Number</span>
+    <pre class="sunlight-highlight-javascript">//returns 2 because the length of &quot;freddyblabla&quot; is 12, and additional
+// repetitions of bla would cause us to exceed the specified padLength of 13
+padCount(&quot;freddy&quot;, &quot;bla&quot;, 13);</pre>
 
-
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>
@@ -1461,7 +1382,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="~decimalAdjust"><span class="type-signature">&lt;inner> </span>decimalAdjust(type, value, exp)</h4>
+    <h4 class="name" id=".padLeft"><span class="type-signature">&lt;static> </span>padLeft(padValue, padLength)</h4>
     
     
 </dt>
@@ -1469,7 +1390,8 @@
 
     
     <div class="description">
-        <p>Decimal adjustment of a number.</p>
+        <p>Pads the left hand side of this string with copies of padValue until another
+ would cause the string's length to exceed padLength.</p>
     </div>
     
 
@@ -1504,7 +1426,7 @@
 
         <tr>
             
-                <td class="name"><code>type</code></td>
+                <td class="name"><code>padValue</code></td>
             
 
             <td class="type">
@@ -1521,20 +1443,20 @@
 
             
 
-            <td class="description last"><p>The type of adjustment.</p></td>
+            <td class="description last"><p>The value to repeat</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>padLength</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">String</span>
 
 
 
@@ -1545,32 +1467,7 @@
 
             
 
-            <td class="description last"><p>The number.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>exp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Integer</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The exponent (the 10 logarithm of the adjustment
-                             base).</p></td>
+            <td class="description last"><p>The max length of the string after padding</p></td>
         </tr>
 
     
@@ -1614,8 +1511,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="math.js.html">math.js</a>,
-				 <a href="math.js.html#sunlight-1-line-163">line 163</a>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-58">line 58</a>
 			</li>
 		</ul>
 	</dd>
@@ -1644,7 +1541,7 @@
     
             
 <div class="param-desc">
-    <p>The adjusted value.</p>
+    <p>A padded string</p>
 </div>
 
 
@@ -1655,7 +1552,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Number</span>
+<span class="param-type">String</span>
 
 
 
@@ -1664,6 +1561,376 @@
 
 
         
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">//returns &quot;00007&quot;
+&quot;7&quot;.padLeft(&quot;0&quot;, 5)</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".padRight"><span class="type-signature">&lt;static> </span>padRight(padValue, padLength)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Pads the right hand side of this string with copies of padValue until another
+ would cause the string's length to exceed padLength.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>padValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to repeat</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>padLength</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The max length of the string after padding</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-111">line 111</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A padded string</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">//returns &quot;Noooo&quot;
+&quot;N&quot;.padRight(&quot;o&quot;, 5)</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".prepend"><span class="type-signature">&lt;static> </span>prepend(prefix)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Concatenates the prefix parameter and this string together.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>prefix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to prepend.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="string.js.html">string.js</a>,
+				 <a href="string.js.html#sunlight-1-line-159">line 159</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The concatenated string.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">//returns &quot;prefix&quot;
+&quot;fix&quot;.prepend(&quot;pre&quot;);</pre>
+
 
     
 </dd>
