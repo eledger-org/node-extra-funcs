@@ -37,7 +37,7 @@ git add .
 
 git commit -m "gh-pages update ${RANDOM}.${RANDOM}"
 
-#git push
+git push
 
-#git checkout $SAVED_BRANCH
+git checkout $SAVED_BRANCH
 
