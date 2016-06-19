@@ -32,8 +32,10 @@ module.exports.enableAll = function() {
  *
  * @param {Number} value  The value on which you want to perform the floor.
  * @param {Number} exp    The exponent of 10 marking the location from which to
- *                        perform the floor.  floor10(987, 2) will round down to
- *                        900.
+ *                        perform the floor.
+ * //@example
+ * //returns 900
+ * floor10(987, 2);
  *
  * @returns {Number}      The floored value (900 in the case above)
  */
@@ -74,8 +76,11 @@ module.exports.disableFloor10 = function() {
  *
  * @param {Number} value  The value on which you want to perform the ceiling.
  * @param {Number} exp    The exponent of 10 marking the location from which to
- *                        perform the ceiling.  ceil10(456, 2) will round up to
- *                        500.
+ *                        perform the ceiling.
+ *
+ * //@example
+ * //returns 500
+ * ceil10(456, 2);
  *
  * @returns {Number}      The ceiled value (500 in the case above)
  */
@@ -115,8 +120,11 @@ module.exports.disableCeil10 = function() {
  *
  * @param {Number} value  The value on which you want to perform the round.
  * @param {Number} exp    The exponent of 10 marking the location from which to
- *                        perform the round.  round10(1251, 2) will round up to
- *                        1300.
+ *                        perform the round.
+ *
+ * @example
+ * //returns 1300
+ * round10(1251, 2);
  *
  * @returns {Number}      The rounded value (1300 in the case above)
  */
