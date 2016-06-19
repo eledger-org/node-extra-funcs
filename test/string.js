@@ -182,6 +182,10 @@ describe("string.js", function() {
         return "".indent(-1);
       });
     });
+
+    it("should not remove a starting newline", function() {
+      assert.equal("\nbla\nbla".indent(4), "\n    bla\n    bla");
+    });
   });
 });
 

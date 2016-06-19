@@ -210,14 +210,22 @@ module.exports.disablePrepend = function() {
  * }, null, 2).indent(4));
  */
 module.exports.indent = function(indentSize) {
+  let sliceLength = 2;
+
+  if (this.startsWith("\n")) {
+    /* We have to slice a little extra if the first character in this string is
+        a newline character. */
+    sliceLength += indentSize;
+  }
+
   /* prepend a new line in order to indent the first line as well */
-  return ("\n" + this)
+  return ("\n " + this)
   /* replace all consecutive end of line characters with \n and indentSize
       spaces */
     .replace(/[\r\n]+/g, "\n" + " ".repeat(indentSize))
   /* pulls off the first newline (which we prepended in order to indent the
       first line.) */
-    .slice(1);
+    .slice(sliceLength);
 };
 
 /**
