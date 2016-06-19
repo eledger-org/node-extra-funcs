@@ -15,7 +15,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "./bin/run_tests.sh",
-    "docgen": "yuidoc -o gen ."
+    "docpublish": "./bin/build_docs.sh && ./bin/publish_docs.sh"
   },
   "repository": {
     "type": "git",
